@@ -1,0 +1,30 @@
+<mat-drawer-container>
+  <mat-drawer #sideNav mode="over" position="end" class="bg-gray-900 text-white p-12">
+    <div
+      (click)="sideNav.close()" 
+      class="absolute top-4 right-4 text-gray-500">
+      <mat-icon>close</mat-icon>
+    </div>
+    <app-navigation-items></app-navigation-items>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="bg-slate-900 text-white h-screen overflow-scroll">
+
+      <div class="sticky top-0">
+        <app-toolbar (menuClick)="sideNav.toggle()"></app-toolbar>
+      </div>
+      <div>
+        <app-header></app-header>
+
+        <div *ngFor="service of services">
+          <app-section></app-section>
+        </div>
+      </div>
+
+    </div>
+      
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+

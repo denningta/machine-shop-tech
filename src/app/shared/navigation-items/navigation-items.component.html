@@ -1,0 +1,8 @@
+<div *ngFor="let item of navigationItems">
+  <a [routerLink]="[item.route]" class="outline-none">
+    <div class="flex mb-8 transition ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:text-indigo-200 duration-300">
+      <mat-icon>{{item.icon}}</mat-icon>
+      <div class="ml-3">{{ item.title }}</div>
+    </div>
+  </a>
+</div>

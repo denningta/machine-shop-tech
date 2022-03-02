@@ -1,0 +1,19 @@
+<div class="bg-slate-900 py-12 px-3">
+  <div class="grid grid-cols-1 place-content-center">
+    <div class="text-center m-2">
+      <h1 class="text-5xl font-bold">Witty Marketing Title</h1>
+    </div>
+    <div class="text-center m-2">
+      <span class="text-slate-400">
+        Some longer subtitle text explaining slightly more. More marketing copy.
+      </span>
+    </div>
+    <div class="flex justify-center m-2">
+      <app-call-to-action 
+        [title]="'Schedule Now'" 
+        [style]="'primary'"
+        [route]="'schedule-request'"
+      ></app-call-to-action>
+    </div>
+  </div>
+</div>

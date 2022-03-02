@@ -1,0 +1,16 @@
+<a [routerLink]="[route]">
+  <div *ngIf="style === 'primary'; then primary else secondary"></div>
+</a>
+
+<ng-template #primary>
+  <div class="w-fit rounded-lg px-4 py-3 cursor-pointer transition ease-in-out bg-indigo-700 hover:-translate-y-0.5 hover:scale-105 hover:bg-indigo-600 duration-300">
+    {{ title }}
+  </div>
+</ng-template>
+
+<ng-template #secondary>
+  <div class="flex w-fit rounded-full pl-5 pr-3 py-2 cursor-pointer transition ease-in-out bg-gray-700 hover:-translate-y-0.5 hover:scale-105 hover:bg-gray-600 duration-300">
+    {{ title }}
+    <mat-icon>chevron_right</mat-icon>
+  </div>
+</ng-template>
