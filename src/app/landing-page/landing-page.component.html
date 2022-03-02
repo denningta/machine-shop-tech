@@ -16,8 +16,12 @@
       <div>
         <app-header></app-header>
 
-        <div *ngFor="service of services">
-          <app-section></app-section>
+        <div *ngFor="let service of services">
+          <app-section 
+            [title]="service.title"
+            [subtitle]="service.subtitle"
+            [description]="service.description"
+          ></app-section>
         </div>
       </div>
 

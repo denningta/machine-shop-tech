@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { services } from './structured-content-data';
+import { SanityService } from '../services/sanity.service';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -7,14 +8,18 @@ import { services } from './structured-content-data';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-  services = services;
+  services!: any[];
 
-  constructor() { }
+  constructor(private sanityService: SanityService) { }
 
   ngOnInit(): void {
+    this.getServices();
   }
 
-  openSideNav(): void {
+  async getServices(): Promise<any[]> {
+    this.services = await this.sanityService.getServices();
+    console.log(this.services);
+    return this.services;
   }
 
 }
