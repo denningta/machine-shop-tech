@@ -8,20 +8,25 @@
     <app-navigation-items></app-navigation-items>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="bg-slate-900 text-white h-screen overflow-scroll">
+    <div class="realitve bg-slate-900 text-white h-screen overflow-scroll">
 
-      <div class="sticky top-0 z-50">
+      <div class="fixed top-0 z-50 w-full">
         <app-toolbar (menuClick)="sideNav.toggle()"></app-toolbar>
       </div>
-      <div>
+      <div class="absolute">
         <app-header></app-header>
 
-        <div *ngFor="let service of services">
-          <app-section 
-            [title]="service.title"
-            [subtitle]="service.subtitle"
-            [description]="service.description"
-          ></app-section>
+        <div 
+          *ngFor="let service of services; let odd=odd" 
+          [class]="odd 
+            ? 'bg-slate-800 border-t border-slate-600' 
+            : 'bg-zinc-800 border-t border-zinc-700'"
+        >
+            <app-section
+              [title]="service.title"
+              [subtitle]="service.subtitle"
+              [description]="service.description"
+            ></app-section>
         </div>
       </div>
 
