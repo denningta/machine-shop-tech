@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { toHTML } from '@portabletext/to-html';
+import { Service } from 'src/app/interfaces/sanity-schema';
 
 @Component({
   selector: 'app-section',
@@ -7,26 +8,20 @@ import { toHTML } from '@portabletext/to-html';
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit, OnChanges {
-  @Input() callToAction!: {
-    buttonText: string;
-    style: 'primary' | 'secondary';
-    route: string;
-  }
-  @Input() title!: string;
-  @Input() subtitle!: string;
-  @Input() description!: any;
+  @Input() service!: Service;
 
   descriptionHTML!: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-
+    console.log(this.service);
+    console.log(this.service.description)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    this.descriptionHTML = toHTML(changes['description'].currentValue);
+    
   }
 
 }

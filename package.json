@@ -24,6 +24,7 @@
     "@sanity/client": "^3.1.0",
     "@sanity/image-url": "^1.0.1",
     "aos": "^3.0.0-beta.6",
+    "groq": "^2.15.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -42,8 +43,9 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "postcss": "^8.4.7",
-    "prettier": "2.5.1",
+    "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.8",
+    "sanity-codegen": "^0.9.8",
     "tailwindcss": "^3.0.23",
     "typescript": "~4.4.3"
   }

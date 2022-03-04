@@ -1,12 +1,7 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-
-interface NavigationItem {
-  title: string;
-  route: string;
-  icon: string; // From material icon library https://fonts.google.com/icons?selected=Material+Icons&icon.query=air
-}
+import { NavItem } from '../../interfaces/sanity-schema';
 
 @Component({
   selector: 'app-navigation-items',
@@ -14,7 +9,7 @@ interface NavigationItem {
   styleUrls: ['./navigation-items.component.scss']
 })
 export class NavigationItemsComponent implements OnInit {
-  @Input() navigationItems!: NavigationItem[];
+  @Input() navItems: NavItem[] | undefined;
 
   constructor() { }
 

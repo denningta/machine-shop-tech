@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CallToAction } from 'src/app/interfaces/sanity-schema';
 
 @Component({
   selector: 'app-call-to-action',
@@ -6,9 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./call-to-action.component.scss']
 })
 export class CallToActionComponent implements OnInit {
-  @Input() title!: string;
-  @Input() style!: 'primary' | 'secondary';
-  @Input() route!: string;
+  @Input() callToAction!: CallToAction
   
   constructor() {}
 

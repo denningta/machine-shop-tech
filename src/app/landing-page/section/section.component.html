@@ -4,20 +4,19 @@
   </div>
 
   <div class="text-indigo-400 mb-4">
-    {{ title }}
+    {{ service.title }}
   </div>
 
   <div class="mb-4 text-3xl font-bold">
-    {{ subtitle }}
+    {{ service.subtitle }}
   </div>
 
-  <div class="mb-4 opacity-60 leading-loose" innerHtml="{{descriptionHTML}} ">
+  <div class="mb-4 opacity-60 leading-loose" innerHtml="{{ descriptionHTML }} ">
   </div>
 
   <div class="mb-8">
     <app-call-to-action 
-      [title]="'test'" 
-      [style]="'primary'"
+      [callToAction]="{buttonText: 'Learn More', style: 'secondary', _type: 'callToAction', _updatedAt: '', _id: '', _createdAt: '', _rev: '' }"
     ></app-call-to-action>
   </div>
 

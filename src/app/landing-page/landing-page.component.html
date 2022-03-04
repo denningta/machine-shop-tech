@@ -7,7 +7,7 @@
         <mat-icon>close</mat-icon>
       </div>
       <app-navigation-items
-        [navigationItems]="pageData.navItems"
+        [navItems]="pageData.navItems"
       ></app-navigation-items>
     </mat-drawer>
     <mat-drawer-content>
@@ -31,9 +31,7 @@
               : 'bg-zinc-800 border-t border-zinc-700'"
           >
               <app-section
-                [title]="service.headline"
-                [subtitle]="service.subtitle"
-                [description]="service.description"
+                [service]="service"
               ></app-section>
           </div>
   

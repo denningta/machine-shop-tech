@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import sanityClient from '@sanity/client';
 import { from, Observable } from 'rxjs';
+import { LandingPageQueryResult, landingPagesQuery } from './queries.groq';
+import type * as Schema from '../interfaces/sanity-schema';
 
 @Injectable({
   providedIn: 'root'
@@ -9,29 +11,15 @@ export class SanityService {
 
   constructor() { }
 
-  sanityClientCredentials = {
-    option: sanityClient({
-      projectId: '6xnf6evu',
-      dataset: 'production'
-    })
-  }
+  client = sanityClient({
+    projectId: '6xnf6evu',
+    dataset: 'production',
+    apiVersion: '2021-03-25',
+    useCdn: true,
+  });
 
-  getLandingPageData(): Observable<any> {
-    return from(this.sanityClientCredentials.option.fetch(
-      `*[_type == 'landingPage' && route.current == 'root'][0] {
-        ...,
-        callToAction->,
-        "navItems": navItems[]->,
-        "services": services[]->
-      }`
-    ))
+  landingPage(): Observable<LandingPageQueryResult> {
+    return from(this.client.fetch(landingPagesQuery));
   }
-
-  async getAll(): Promise<any[]> {
-    return await this.sanityClientCredentials.option.fetch(
-      `*`
-    );
-  }
-
 
 }

@@ -6,8 +6,8 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input() headline!: string;
-  @Input() subHeadline!: string;
+  @Input() headline: string | undefined;
+  @Input() subHeadline: string | undefined;
   @Input() callToAction!: any;
 
   constructor() { }
