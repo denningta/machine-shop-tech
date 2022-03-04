@@ -23,6 +23,7 @@
     "@portabletext/to-html": "^1.0.2",
     "@sanity/client": "^3.1.0",
     "@sanity/image-url": "^1.0.1",
+    "aos": "^3.0.0-beta.6",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

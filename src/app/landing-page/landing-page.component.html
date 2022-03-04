@@ -1,39 +1,52 @@
-<mat-drawer-container>
-  <mat-drawer #sideNav mode="over" position="end" class="bg-gray-900 text-white p-12">
-    <div
-      (click)="sideNav.close()" 
-      class="absolute top-4 right-4 text-gray-500">
-      <mat-icon>close</mat-icon>
-    </div>
-    <app-navigation-items></app-navigation-items>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div class="realitve bg-slate-900 text-white h-screen overflow-scroll">
-
-      <div class="fixed top-0 z-50 w-full">
-        <app-toolbar (menuClick)="sideNav.toggle()"></app-toolbar>
+<div *ngIf="pageData$ | async as pageData; else loading">
+  <mat-drawer-container>
+    <mat-drawer #sideNav mode="over" position="end" class="bg-gray-900 text-white p-12 w-4/5 min-w-fit">
+      <div
+        (click)="sideNav.close()"
+        class="absolute top-4 right-4 text-gray-500">
+        <mat-icon>close</mat-icon>
       </div>
-      <div class="absolute">
-        <app-header></app-header>
-
-        <div 
-          *ngFor="let service of services; let odd=odd" 
-          [class]="odd 
-            ? 'bg-slate-800 border-t border-slate-600' 
-            : 'bg-zinc-800 border-t border-zinc-700'"
-        >
-            <app-section
-              [title]="service.title"
-              [subtitle]="service.subtitle"
-              [description]="service.description"
-            ></app-section>
+      <app-navigation-items
+        [navigationItems]="pageData.navItems"
+      ></app-navigation-items>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="realitve bg-slate-900 text-white h-screen overflow-scroll">
+  
+        <div class="fixed top-0 z-50 w-full">
+          <app-toolbar (menuClick)="sideNav.toggle()"></app-toolbar>
         </div>
+  
+        <div class="absolute w-full">
+          <app-header
+            [headline]="pageData.headline"
+            [subHeadline]="pageData.subHeadline"
+            [callToAction]="pageData.callToAction"
+          ></app-header>
+  
+          <div
+            *ngFor="let service of pageData.services; let odd=odd"
+            [class]="odd
+              ? 'bg-slate-800 border-t border-slate-600'
+              : 'bg-zinc-800 border-t border-zinc-700'"
+          >
+              <app-section
+                [title]="service.headline"
+                [subtitle]="service.subtitle"
+                [description]="service.description"
+              ></app-section>
+          </div>
+  
+        </div>
+  
       </div>
+  
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
 
-    </div>
-      
-  </mat-drawer-content>
-</mat-drawer-container>
-
-
-
+<ng-template #loading>
+  <div class="flex justify-center items-center w-full h-full bg-slate-900">
+    <mat-icon>tractor</mat-icon>
+  </div>
+</ng-template>

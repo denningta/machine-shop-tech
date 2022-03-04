@@ -8,14 +8,13 @@ import { toHTML } from '@portabletext/to-html';
 })
 export class SectionComponent implements OnInit, OnChanges {
   @Input() callToAction!: {
-    title: string;
-    route: string;
+    buttonText: string;
     style: 'primary' | 'secondary';
+    route: string;
   }
   @Input() title!: string;
   @Input() subtitle!: string;
   @Input() description!: any;
-  @Input() imageUrl!: string;
 
   descriptionHTML!: string;
 
@@ -26,8 +25,8 @@ export class SectionComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
     this.descriptionHTML = toHTML(changes['description'].currentValue);
-    console.log(this.descriptionHTML) 
   }
 
 }

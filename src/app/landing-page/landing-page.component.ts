@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SanityService } from '../services/sanity.service';
+
 
 
 @Component({
@@ -8,18 +10,16 @@ import { SanityService } from '../services/sanity.service';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-  services!: any[];
+  pageData$: Observable<any>;
 
-  constructor(private sanityService: SanityService) { }
+  constructor(private sanityService: SanityService) {
+    this.pageData$ = sanityService.getLandingPageData();
+    this.pageData$.subscribe(value => console.log(value))
+  }
 
   ngOnInit(): void {
-    this.getServices();
+
   }
 
-  async getServices(): Promise<any[]> {
-    this.services = await this.sanityService.getServices();
-    console.log(this.services);
-    return this.services;
-  }
 
 }
