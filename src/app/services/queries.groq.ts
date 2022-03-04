@@ -9,8 +9,9 @@ export const client = sanityClient({
   useCdn: true,
 });
 
-export const landingPagesQuery = groq`
-  *[_type == 'landingPage' && route->route.current == 'root'][0] {
+export function getlandingPageQuery(route: string) { 
+  return groq`
+  *[_type == 'landingPage' && route->route.current == ${route}][0] {
     ...,
     route->,
     callToAction->,
@@ -18,6 +19,7 @@ export const landingPagesQuery = groq`
     "services": services[]->
   }
 `;
+}
 
 export type LandingPageQueryResult = Omit<Schema.LandingPage, 'callToAction' | 'navItems' | 'services'> & {
   callToAction: Schema.CallToAction;
