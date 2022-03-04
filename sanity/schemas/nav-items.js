@@ -19,12 +19,9 @@ export default {
     {
       name: 'route',
       title: 'Route',
-      description: 'When the nav item is click, where should the user be sent?',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
+      description: 'When the nav item is clicked, where should the user be sent?',
+      type: 'reference',
+      to: [{type: 'route'}]
     }
   ]
 }

@@ -20,11 +20,8 @@ export default {
       name: 'route',
       title: 'Route',
       description: 'Intended route of the page',
-      type: 'slug',
-      options: {
-        source: 'pageName',
-        maxLength: 96,
-      },
+      type: 'reference',
+      to: [{type: 'route'}]
     },
     {
       name: 'headline',

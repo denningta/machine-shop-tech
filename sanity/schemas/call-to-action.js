@@ -32,10 +32,8 @@ export default {
       name: 'route',
       title: 'Route',
       description: 'What route should this call-to-action call when clicked?',
-      type: 'slug',
-      options: {
-        maxLength: 96,
-      },
+      type: 'reference',
+      to: [{type: 'route'}]
     },
 
   ]

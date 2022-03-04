@@ -13,6 +13,7 @@ import service from './service';
 import landingPage from './landing-page';
 import callToAction from './call-to-action';
 import navItems from './nav-items';
+import route from './route';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,6 +23,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     //Singletons
+    route,
     landingPage,
     callToAction,
     navItems,
