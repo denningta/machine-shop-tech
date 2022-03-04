@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { toHTML } from '@portabletext/to-html';
 import { Service } from 'src/app/interfaces/sanity-schema';
+import { PortableTextService } from 'src/app/services/portable-text.service';
 
 @Component({
   selector: 'app-section',
@@ -12,12 +13,11 @@ export class SectionComponent implements OnInit, OnChanges {
 
   descriptionHTML!: string;
 
-  constructor() {
-  }
+  constructor(private portableTextService: PortableTextService) {}
 
   ngOnInit(): void {
-    console.log(this.service);
-    console.log(this.service.description)
+    if (!this.service) return;
+    this.descriptionHTML = this.portableTextService.renderPortableText(this.service.description!)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
