@@ -14,7 +14,7 @@ export class LandingPageComponent implements OnInit {
   constructor(private sanityService: SanityService) {
     this.pageData$ = sanityService.landingPage();
     this.pageData$.subscribe(value => {
-
+      console.log(value);
     });
   }
 

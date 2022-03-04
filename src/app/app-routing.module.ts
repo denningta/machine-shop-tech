@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent }
+  { path: '', component: LandingPageComponent },
+  { path: 'something', component: LandingPageComponent }
 ];
 
 @NgModule({
@@ -11,5 +12,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-
 }

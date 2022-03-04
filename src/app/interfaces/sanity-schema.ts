@@ -37,6 +37,29 @@ export type {
 };
 
 /**
+ * Route
+ *
+ *
+ */
+export interface Route extends SanityDocument {
+  _type: "route";
+
+  /**
+   * Rote Title — `string`
+   *
+   * Internal, human-readable name for this route
+   */
+  title?: string;
+
+  /**
+   * Route — `slug`
+   *
+   * Hyphenated name of the route.  "root" is a reserved keyword for the root of the domain (eg. https://domain.com)
+   */
+  route?: { _type: "route"; current: string };
+}
+
+/**
  * Landing Page
  *
  *
@@ -59,11 +82,11 @@ export interface LandingPage extends SanityDocument {
   description?: string;
 
   /**
-   * Route — `slug`
+   * Route — `reference`
    *
    * Intended route of the page
    */
-  route?: { _type: "route"; current: string };
+  route?: SanityReference<Route>;
 
   /**
    * Headline — `string`
@@ -131,11 +154,11 @@ export interface CallToAction extends SanityDocument {
   style?: "primary" | "secondary";
 
   /**
-   * Route — `slug`
+   * Route — `reference`
    *
    * What route should this call-to-action call when clicked?
    */
-  route?: { _type: "route"; current: string };
+  route?: SanityReference<Route>;
 }
 
 /**
@@ -161,11 +184,11 @@ export interface NavItem extends SanityDocument {
   icon?: string;
 
   /**
-   * Route — `slug`
+   * Route — `reference`
    *
-   * When the nav item is click, where should the user be sent?
+   * When the nav item is clicked, where should the user be sent?
    */
-  route?: { _type: "route"; current: string };
+  route?: SanityReference<Route>;
 }
 
 /**
@@ -344,6 +367,7 @@ export type BlockContent = Array<
 >;
 
 export type Documents =
+  | Route
   | LandingPage
   | CallToAction
   | NavItem
