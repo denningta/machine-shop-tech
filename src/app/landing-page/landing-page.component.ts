@@ -1,18 +1,20 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { fadeInOut } from '../animations/fadeIn';
-import { AnimateOnScrollService } from '../directives/animate-on-scroll.service';
+import { AnimateOnScrollService } from '../directives/animate-on-scroll/animate-on-scroll.service';
 import { SanityService } from '../services/sanity.service';
-
+import { fadeInRight, fadeInDown, fadeInUp, fadeOutUp } from 'src/app/animations/fade';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
-  animations: [fadeInOut]
 })
 export class LandingPageComponent implements OnInit {
   pageData$;
+  fadeInRight = fadeInRight;
+  fadeInDown = fadeInDown;
+  fadeInUp = fadeInUp;
+  fadeOutUp = fadeOutUp;
 
   constructor(
     private sanityService: SanityService,
@@ -28,6 +30,10 @@ export class LandingPageComponent implements OnInit {
 
   onScroll(event: Event) {
     this.animateOnScroll.onScroll(event);
+  }
+
+  animationTrigger(event: Event) {
+    console.log(event);
   }
 
 }

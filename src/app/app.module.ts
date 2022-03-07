@@ -9,7 +9,6 @@ import { client, routesQuery, RoutesQueryResult } from './services/queries.groq'
 import { Router } from '@angular/router';
 import { from, Observable, tap } from 'rxjs';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AnimateOnScrollDirective } from './directives/animate-on-scroll.directive';
 
 function initializeAppFactory(router: Router): () => Observable<RoutesQueryResult> {
   return () => from(client.fetch(routesQuery))

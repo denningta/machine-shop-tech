@@ -27,17 +27,11 @@
   
           <div
             *ngFor="let service of pageData.services; let odd=odd"
-            [class]="odd
-              ? 'bg-slate-800 border-t border-slate-600'
-              : 'bg-zinc-800 border-t border-zinc-700'"
           >
               <app-section
                 [service]="service"
+                [odd]="odd"
               ></app-section>
-          </div>
-
-          <div class="bg-slate-900 text-3xl p-8">
-            <div appAnimateOnScroll>Some text that is cool</div>
           </div>
   
         </div>

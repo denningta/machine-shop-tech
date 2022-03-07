@@ -11,4 +11,4 @@ import { AnimateOnScrollDirective } from './animate-on-scroll.directive';
   ],
   exports: [AnimateOnScrollDirective]
 })
-export class DirectivesModule { }
+export class AnimateOnScrollModule { }
