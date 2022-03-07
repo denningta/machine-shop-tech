@@ -10,8 +10,6 @@ export class PortableTextService {
   constructor() { }
 
   renderPortableText(blockContent: BlockContent): string {
-    console.log(blockContent);
-
     const renderedHTML = toHTML(blockContent);
     return renderedHTML
   }

@@ -10,6 +10,7 @@ import { NavItem } from '../../interfaces/sanity-schema';
 })
 export class NavigationItemsComponent implements OnInit {
   @Input() navItems: NavItem[] | undefined;
+  @Input() inline: boolean = false;
 
   constructor() { }
 

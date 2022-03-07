@@ -8,6 +8,8 @@ import { SectionComponent } from './section/section.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationItemsModule } from '../shared/navigation-items/navigation-items.module';
 import { CallToActionModule } from '../shared/call-to-action/call-to-action.module';
+import { DroneIconModule } from '../shared/drone-icon/drone-icon.module';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [LandingPageComponent, HeaderComponent, SectionComponent],
@@ -18,6 +20,8 @@ import { CallToActionModule } from '../shared/call-to-action/call-to-action.modu
     MatSidenavModule,
     NavigationItemsModule,
     CallToActionModule,
+    DroneIconModule,
+    DirectivesModule,
   ],
   exports: [LandingPageComponent]
 })

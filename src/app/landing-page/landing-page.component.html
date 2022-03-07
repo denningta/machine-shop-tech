@@ -8,13 +8,14 @@
       </div>
       <app-navigation-items
         [navItems]="pageData.navItems"
+        [inline]="false"
       ></app-navigation-items>
     </mat-drawer>
-    <mat-drawer-content>
+    <mat-drawer-content (scroll)="onScroll($event)">
       <div class="realitve bg-slate-900 text-white h-screen overflow-scroll">
   
         <div class="fixed top-0 z-50 w-full">
-          <app-toolbar (menuClick)="sideNav.toggle()"></app-toolbar>
+          <app-toolbar (menuClick)="sideNav.toggle()" [navItems]="pageData.navItems"></app-toolbar>
         </div>
   
         <div class="absolute w-full">
@@ -34,6 +35,10 @@
                 [service]="service"
               ></app-section>
           </div>
+
+          <div class="bg-slate-900 text-3xl p-8">
+            <div appAnimateOnScroll>Some text that is cool</div>
+          </div>
   
         </div>
   
@@ -43,8 +48,10 @@
   </mat-drawer-container>
 </div>
 
-<ng-template #loading>
+
+
+<ng-template #loading >
   <div class="flex justify-center items-center w-full h-full bg-slate-900">
-    <mat-icon>tractor</mat-icon>
+    <app-drone-icon></app-drone-icon>
   </div>
 </ng-template>

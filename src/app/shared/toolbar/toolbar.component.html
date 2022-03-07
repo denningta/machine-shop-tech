@@ -1,8 +1,14 @@
-<div class="flex p-4 bg-gradient-to-b from-slate-900 via-slate-900/70">
-  <div class="mx-2"><mat-icon>rocket_launch</mat-icon></div>
-  <div>Precision Aero</div>
+<div class="flex p-4 bg-slate-900">
+  <div class="z-50 mx-2"><mat-icon>rocket_launch</mat-icon></div>
+  <div class="z-50">Precision Aero</div>
   <div class="grow"></div>
-  <div class="cursor-pointer" (click)="onMenuClick()">
+  <div class="z-50 cursor-pointer sm:hidden" (click)="onMenuClick()">
     <mat-icon>menu</mat-icon>
+  </div>
+  <div class="hidden sm:flex">
+    <app-navigation-items
+      [navItems]="navItems"
+      [inline]="true"
+    ></app-navigation-items>
   </div>
 </div>

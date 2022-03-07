@@ -13,15 +13,7 @@ export class SanityService {
   constructor() { }
 
   landingPage(route: string): Observable<LandingPageQueryResult> {
-    return from(client.fetch(`
-      *[_type == 'landingPage' && route->route.current == '${route}'][0] {
-        ...,
-        route->,
-        callToAction->,
-        "navItems": navItems[]->,
-        "services": services[]->
-      }
-    `));
+    return from(client.fetch(getlandingPageQuery(route)));
   }
 
 

@@ -11,18 +11,26 @@ export const client = sanityClient({
 
 export function getlandingPageQuery(route: string) { 
   return groq`
-  *[_type == 'landingPage' && route->route.current == ${route}][0] {
+  *[_type == 'landingPage' && route->route.current == '${route}'][0] {
     ...,
     route->,
-    callToAction->,
-    "navItems": navItems[]->,
+    "callToAction": callToAction->{
+      ...,
+      "route": route->route.current,
+    },
+    "navItems": navItems[]->{
+      ...,
+      "route": route->route.current
+    },
     "services": services[]->
   }
 `;
 }
 
 export type LandingPageQueryResult = Omit<Schema.LandingPage, 'callToAction' | 'navItems' | 'services'> & {
-  callToAction: Schema.CallToAction;
+  callToAction: Omit<Schema.CallToAction, 'route'> & {
+    route: string;
+  };
   navItems: Schema.NavItem[];
   services: Schema.Service[];
 }

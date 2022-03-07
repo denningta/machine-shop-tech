@@ -1,8 +1,10 @@
-<div *ngFor="let item of navItems">
-  <a [routerLink]="" class="outline-none">
-    <div class="flex mb-8 transition ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:text-indigo-200 duration-300">
-      <mat-icon>{{ item.icon }}</mat-icon>
-      <div class="ml-3">{{ item.title }}</div>
-    </div>
-  </a>
+<div [class]="inline ? 'flex' : 'block'">
+  <div *ngFor="let item of navItems" [class]="inline ? 'mr-6' : 'mb-8'">
+    <a routerLink="/{{item.route}}" class="outline-none">
+      <div class="flex transition ease-in-out hover:text-indigo-200 duration-300">
+        <mat-icon *ngIf="!inline">{{ item.icon }}</mat-icon>
+        <div class="ml-3">{{ item.title }}</div>
+      </div>
+    </a>
+  </div>
 </div>

@@ -1,0 +1,8 @@
+$gradient: (black, transparent 90%);
+
+.gradient-mask {
+  mask: -webkit-linear-gradient($gradient);
+  mask: linear-gradient($gradient);
+  -webkit-mask: -webkit-linear-gradient($gradient);
+  -webkit-mask: linear-gradient($gradient);
+}

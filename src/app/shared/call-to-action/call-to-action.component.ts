@@ -7,12 +7,13 @@ import { CallToAction } from 'src/app/interfaces/sanity-schema';
   styleUrls: ['./call-to-action.component.scss']
 })
 export class CallToActionComponent implements OnInit {
-  @Input() callToAction!: CallToAction
+  @Input() callToAction!: Omit<CallToAction, 'route'> & {
+    route: string;
+  };
   
   constructor() {}
 
   ngOnInit(): void {
-
   }
 
 }

@@ -9,6 +9,7 @@ import { client, routesQuery, RoutesQueryResult } from './services/queries.groq'
 import { Router } from '@angular/router';
 import { from, Observable, tap } from 'rxjs';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AnimateOnScrollDirective } from './directives/animate-on-scroll.directive';
 
 function initializeAppFactory(router: Router): () => Observable<RoutesQueryResult> {
   return () => from(client.fetch(routesQuery))
@@ -18,7 +19,10 @@ function initializeAppFactory(router: Router): () => Observable<RoutesQueryResul
         sanityRoutes.forEach(sanityRoute => {
           if (!sanityRoute.connectedPage) return;
           routerConfig.push(
-            { path: sanityRoute.route, component: LandingPageComponent }
+            { 
+              path: sanityRoute.route === 'root' ? '' : sanityRoute.route, 
+              component: LandingPageComponent 
+            }
           )
         });
         router.resetConfig(routerConfig);
