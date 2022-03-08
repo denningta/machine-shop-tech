@@ -1,51 +1,15 @@
-<div *ngIf="pageData$ | async as pageData; else loading">
-  <mat-drawer-container>
-    <mat-drawer #sideNav mode="over" position="end" class="bg-gray-900 text-white p-12 w-4/5 min-w-fit">
-      <div
-        (click)="sideNav.close()"
-        class="absolute top-4 right-4 text-gray-500">
-        <mat-icon>close</mat-icon>
-      </div>
-      <app-navigation-items
-        [navItems]="pageData.navItems"
-        [inline]="false"
-      ></app-navigation-items>
-    </mat-drawer>
-    <mat-drawer-content (scroll)="onScroll($event)">
-      <div class="realitve bg-slate-900 text-white h-screen overflow-scroll">
-  
-        <div class="fixed top-0 z-50 w-full">
-          <app-toolbar (menuClick)="sideNav.toggle()" [navItems]="pageData.navItems"></app-toolbar>
-        </div>
-  
-        <div class="absolute w-full">
-          <app-header
-            [headline]="pageData.headline"
-            [subHeadline]="pageData.subHeadline"
-            [callToAction]="pageData.callToAction"
-          ></app-header>
-  
-          <div
-            *ngFor="let service of pageData.services; let odd=odd"
-          >
-              <app-section
-                [service]="service"
-                [odd]="odd"
-              ></app-section>
-          </div>
-  
-        </div>
-  
-      </div>
-  
-    </mat-drawer-content>
-  </mat-drawer-container>
-</div>
+<div class="absolute w-full" *ngIf="(pageData$ | async) as pageData">
+  <app-header
+    [headline]="pageData.headline"
+    [subHeadline]="pageData.subHeadline"
+    [callToAction]="pageData.callToAction"
+  ></app-header>
 
-
-
-<ng-template #loading >
-  <div class="flex justify-center items-center w-full h-full bg-slate-900">
-    <app-drone-icon></app-drone-icon>
+  <div *ngFor="let service of pageData.services; let odd=odd"
+    class="flex justify-center bg-slate-800 border-t border-slate-700">
+      <app-section
+        [service]="service"
+        [odd]="odd"
+      ></app-section>
   </div>
-</ng-template>
+</div>

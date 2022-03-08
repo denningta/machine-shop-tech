@@ -67,6 +67,13 @@ export default {
           to: [{type: 'service'}]
         }
       ],
+    }, 
+    {
+      name: 'footer',
+      title: 'Footer',
+      description: 'Choose the footer to display on this landing page',
+      type: 'reference',
+      to: [{type: 'footer'}]
     }
   ]
 }

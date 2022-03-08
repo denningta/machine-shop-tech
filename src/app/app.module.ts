@@ -9,6 +9,11 @@ import { client, routesQuery, RoutesQueryResult } from './services/queries.groq'
 import { Router } from '@angular/router';
 import { from, Observable, tap } from 'rxjs';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NavigationItemsModule } from './shared/navigation-items/navigation-items.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { ToolbarModule } from './shared/toolbar/toolbar.module';
+import { DroneIconModule } from './shared/drone-icon/drone-icon.module';
 
 function initializeAppFactory(router: Router): () => Observable<RoutesQueryResult> {
   return () => from(client.fetch(routesQuery))
@@ -37,7 +42,12 @@ function initializeAppFactory(router: Router): () => Observable<RoutesQueryResul
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LandingPageModule
+    LandingPageModule,
+    NavigationItemsModule,
+    MatSidenavModule,
+    MatIconModule,
+    ToolbarModule,
+    DroneIconModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

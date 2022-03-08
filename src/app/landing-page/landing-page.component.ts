@@ -32,8 +32,4 @@ export class LandingPageComponent implements OnInit {
     this.animateOnScroll.onScroll(event);
   }
 
-  animationTrigger(event: Event) {
-    console.log(event);
-  }
-
 }

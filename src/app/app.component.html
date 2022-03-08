@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<div *ngIf="pageData$ | async as pageData; else loading">
+  <mat-sidenav-container>
+    <mat-sidenav #sideNav 
+      mode="over" 
+      position="end"
+      fixedInViewport="true" 
+      class="bg-gray-900 text-white p-12 w-4/5 min-w-fit">
+      <div
+        (click)="sideNav.close()"
+        class="absolute top-4 right-4 text-gray-500">
+        <mat-icon>close</mat-icon>
+      </div>
+      <app-navigation-items
+        [navItems]="pageData.navItems"
+        [inline]="false"
+      ></app-navigation-items>
+    </mat-sidenav>
+    <mat-sidenav-content (scroll)="onScroll($event)">
+      <div class="bg-slate-900 text-white min-h-screen">
+  
+        <div class="fixed top-0 z-50 w-full">
+          <app-toolbar (menuClick)="sideNav.toggle()" [navItems]="pageData.navItems"></app-toolbar>
+        </div>
+
+        <router-outlet></router-outlet>
+
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<ng-template #loading >
+  <div class="flex justify-center items-center w-full h-full bg-slate-900">
+    <app-drone-icon></app-drone-icon>
+  </div>
+</ng-template>

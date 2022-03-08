@@ -14,6 +14,8 @@ import landingPage from './landing-page';
 import callToAction from './call-to-action';
 import navItems from './nav-items';
 import route from './route';
+import footer from './footer';
+import socialConnection from './social-connection';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,9 +27,11 @@ export default createSchema({
     //Singletons
     route,
     landingPage,
+    footer,
     callToAction,
     navItems,
     service,
+    socialConnection,
     post,
     author,
     category,
