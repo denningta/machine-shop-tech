@@ -1,4 +1,4 @@
-<div class="absolute w-full" *ngIf="(pageData$ | async) as pageData">
+<div class="w-full" *ngIf="(pageData$ | async) as pageData">
   <app-header
     [headline]="pageData.headline"
     [subHeadline]="pageData.subHeadline"

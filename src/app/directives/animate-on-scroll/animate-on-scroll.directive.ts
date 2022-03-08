@@ -1,6 +1,6 @@
 import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } from '@angular/animations';
-import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
-import { debounceTime, distinctUntilChanged, filter, map, mergeMap, of, skipWhile, switchMap, tap, throttle, throttleTime } from 'rxjs';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, mergeMap, Observable, of, skipWhile, Subject, switchMap, tap, throttle, throttleTime } from 'rxjs';
 import { AnimateOnScrollService } from './animate-on-scroll.service';
 
 @Directive({
@@ -11,11 +11,16 @@ export class AnimateOnScrollDirective {
   @Input() aosExitAnimation!: AnimationMetadata | AnimationMetadata[];
   @Input() aosOffset: number = 0;
   @Input() aosDelay: number = 0;
-  
 
+  private _scroll$ = new BehaviorSubject<Event | undefined>(undefined);
+  scroll$: Observable<Event | undefined>;
   private _entryPlayer!: AnimationPlayer;
   private _exitPlayer!: AnimationPlayer;
-  
+
+  @HostListener('window:scroll', ['$event'])
+    onWindowScroll(event: Event) {
+      this._scroll$.next(event);
+    }
 
   constructor(
     private animateOnScrollService: AnimateOnScrollService,
@@ -23,9 +28,9 @@ export class AnimateOnScrollDirective {
     private renderer: Renderer2,
     private animationBuilder: AnimationBuilder
   ) {
-
+    this.scroll$ = this._scroll$.asObservable();
     let entryTriggered = false;
-    this.animateOnScrollService.scroll$.pipe(
+    this.scroll$.pipe(
       switchMap(() => {
         const viewportHeight = window.innerHeight;
         const yPos = this.element.nativeElement.getBoundingClientRect().y;

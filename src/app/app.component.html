@@ -1,5 +1,8 @@
-<div *ngIf="pageData$ | async as pageData; else loading">
-  <mat-sidenav-container>
+<div *ngIf="pageData$ | async as pageData; else loading" 
+  class="flex flex-col absolute top-0 bottom-0 left-0 right-0">
+
+  <mat-sidenav-container style="flex: 1 0 auto">
+
     <mat-sidenav #sideNav 
       mode="over" 
       position="end"
@@ -15,17 +18,19 @@
         [inline]="false"
       ></app-navigation-items>
     </mat-sidenav>
-    <mat-sidenav-content (scroll)="onScroll($event)">
-      <div class="bg-slate-900 text-white min-h-screen">
-  
+
+    <mat-sidenav-content (scroll)="onScroll($event)" class="bg-slate-900">
+      <div class="bg-slate-900 text-white">
         <div class="fixed top-0 z-50 w-full">
           <app-toolbar (menuClick)="sideNav.toggle()" [navItems]="pageData.navItems"></app-toolbar>
         </div>
-
         <router-outlet></router-outlet>
-
+        <!-- <div *ngFor="let paragraph of fillerContent">
+          <p>{{ paragraph }}</p>
+        </div> -->
       </div>
     </mat-sidenav-content>
+
   </mat-sidenav-container>
 </div>
 
