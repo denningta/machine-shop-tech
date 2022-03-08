@@ -1,0 +1,14 @@
+<div class="flex justify-center items-center h-60 pt-[60px]">
+  <div class="text-center">
+    <div class="text-3xl font-bold my-4">Blog</div>
+    <div class="text-xl font-thin opacity-50">The latest information straight from the team</div>
+  </div>
+</div>
+
+<div class="flex justify-center m-6">
+  <div class="w-full max-w-[1300px]">
+    <div *ngFor="let list of blogLists" class="mb-20">
+      <app-post-list [listCategory]="list"></app-post-list>
+    </div>
+  </div>
+</div>

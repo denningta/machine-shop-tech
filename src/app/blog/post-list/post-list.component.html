@@ -1,0 +1,47 @@
+<div class="flex">
+  <div class="grow text-2xl mb-4">{{ listTitle }}</div>
+  <div class="opacity-50 text-sm font-thin cursor-pointer">SEE ALL</div>
+</div>
+
+<div *ngIf="listCategory === 'latest'; else featured">
+
+  <div class="grid grid-cols-2 gap-8">
+    <div *ngFor="let post of latestPosts; index as i; first as isFirst;"
+      class="h-[360px] cursor-pointer transition ease-in-out hover:scale-105 duration-100 "
+      [class]="isFirst ? 'col-span-2' : 'col-span-1'"
+    >
+      <div class="w-full h-full bg-slate-800 rounded-2xl overflow-hidden flex flex-col"
+        [class]="isFirst ? 'md:grid md:grid-cols-2' : ''"
+      >
+        <div class="grow p-6 bg-indigo-900">
+          Post image
+        </div>
+        <div class="p-6">
+          <div>Post Title</div>
+          <div>6 mins</div>
+          <div>Tim</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #featured>
+  <div class="grid grid-cols-4 gap-8">
+    <div *ngFor="let post of featuredPosts; index as i; first as isFirst;"
+      class="h-[360px] cursor-pointer transition ease-in-out hover:scale-105 duration-100 col-span-1"
+    >
+      <div class="w-full h-full bg-slate-800 rounded-2xl overflow-hidden flex flex-col">
+        <div class="grow p-6 bg-indigo-900">
+          Post image
+        </div>
+        <div class="p-6">
+          <div>Post Title</div>
+          <div>6 mins</div>
+          <div>Tim</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
