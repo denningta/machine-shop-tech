@@ -21,8 +21,7 @@ export class LandingPageComponent implements OnInit {
     private router: Router,
     private animateOnScroll: AnimateOnScrollService,
   ) {
-    const route = router.url === '/' ? 'root' : router.url.substring(1);
-    this.pageData$ = sanityService.landingPage(route);
+    this.pageData$ = sanityService.landingPageData$;
   }
 
   ngOnInit(): void {

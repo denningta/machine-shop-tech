@@ -122,6 +122,50 @@ export interface LandingPage extends SanityDocument {
    * Add the services that should be displayed on this page.
    */
   services?: Array<SanityKeyedReference<Service>>;
+
+  /**
+   * Footer — `reference`
+   *
+   * Choose the footer to display on this landing page
+   */
+  footer?: SanityReference<Footer>;
+}
+
+/**
+ * Footer
+ *
+ *
+ */
+export interface Footer extends SanityDocument {
+  _type: "footer";
+
+  /**
+   * Footer title — `string`
+   *
+   * Internal title of the footer
+   */
+  title?: string;
+
+  /**
+   * Description — `string`
+   *
+   * Describe the purpose of the footer
+   */
+  description?: string;
+
+  /**
+   * Navigation Items — `array`
+   *
+   * Select the navigation items to display in the footer
+   */
+  navItems?: Array<SanityKeyedReference<NavItem>>;
+
+  /**
+   * Social Connections — `array`
+   *
+   * Select the social connections to display in the footer
+   */
+  socials?: Array<SanityKeyedReference<SocialConnection>>;
 }
 
 /**
@@ -229,6 +273,29 @@ export interface Service extends SanityDocument {
 }
 
 /**
+ * Social Connections
+ *
+ *
+ */
+export interface SocialConnection extends SanityDocument {
+  _type: "socialConnection";
+
+  /**
+   * Social Media Type — `string`
+   *
+   * Select the social media platform to connect
+   */
+  type?: "facebook" | "instagram" | "twitter" | "linkedin";
+
+  /**
+   * URL — `url`
+   *
+   * Enter the url for the specific page on the platform
+   */
+  url?: string;
+}
+
+/**
  * Post
  *
  *
@@ -282,6 +349,13 @@ export interface Post extends SanityDocument {
    *
    */
   publishedAt?: string;
+
+  /**
+   * Featured Post? — `boolean`
+   *
+   * Check to pin this post to the featured list
+   */
+  featured?: boolean;
 
   /**
    * Body — `blockContent`
@@ -369,9 +443,11 @@ export type BlockContent = Array<
 export type Documents =
   | Route
   | LandingPage
+  | Footer
   | CallToAction
   | NavItem
   | Service
+  | SocialConnection
   | Post
   | Author
   | Category;

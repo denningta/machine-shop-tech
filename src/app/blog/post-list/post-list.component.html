@@ -5,22 +5,16 @@
 
 <div *ngIf="listCategory === 'latest'; else featured">
 
-  <div class="grid grid-cols-2 gap-8">
+  <div class="grid grid-cols-2 gap-3 md:gap-8">
     <div *ngFor="let post of latestPosts; index as i; first as isFirst;"
-      class="h-[360px] cursor-pointer transition ease-in-out hover:scale-105 duration-100 "
+      class="h-[360px] cursor-pointer transition ease-in-out hover:scale-[1.01] duration-100 drop-shadow"
       [class]="isFirst ? 'col-span-2' : 'col-span-1'"
+      (click)="selectPost(post.slug)"
     >
       <div class="w-full h-full bg-slate-800 rounded-2xl overflow-hidden flex flex-col"
         [class]="isFirst ? 'md:grid md:grid-cols-2' : ''"
       >
-        <div class="grow p-6 bg-indigo-900">
-          Post image
-        </div>
-        <div class="p-6">
-          <div>Post Title</div>
-          <div>6 mins</div>
-          <div>Tim</div>
-        </div>
+        <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{post: post}"></ng-container>
       </div>
     </div>
   </div>
@@ -28,20 +22,27 @@
 </div>
 
 <ng-template #featured>
-  <div class="grid grid-cols-4 gap-8">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
     <div *ngFor="let post of featuredPosts; index as i; first as isFirst;"
-      class="h-[360px] cursor-pointer transition ease-in-out hover:scale-105 duration-100 col-span-1"
+      class="h-[260px] md:h-[360px] cursor-pointer transition ease-in-out hover:scale-[1.01] duration-100 col-span-1"
+      (click)="selectPost(post.slug)"
     >
       <div class="w-full h-full bg-slate-800 rounded-2xl overflow-hidden flex flex-col">
-        <div class="grow p-6 bg-indigo-900">
-          Post image
-        </div>
-        <div class="p-6">
-          <div>Post Title</div>
-          <div>6 mins</div>
-          <div>Tim</div>
-        </div>
+        <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{post: post}"></ng-container>
       </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #card let-post="post">
+  <div class="grow content-center bg-indigo-900 overflow-hidden">
+    <img class="object-cover" src="{{ urlFor(post.mainImage) }}" />
+  </div>
+  <div class="p-3 md:p-6">
+    <div>{{ post.title }}</div>
+    <div class="flex text-sm opacity-50 mt-2">
+      <div class="grow hidden sm:flex">{{ post.author.name }}</div>
+      <div class="hidden sm:flex">6 mins</div>
     </div>
   </div>
 </ng-template>

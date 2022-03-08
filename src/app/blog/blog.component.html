@@ -7,8 +7,12 @@
 
 <div class="flex justify-center m-6">
   <div class="w-full max-w-[1300px]">
-    <div *ngFor="let list of blogLists" class="mb-20">
-      <app-post-list [listCategory]="list"></app-post-list>
+    <div class="mb-20">
+      <app-post-list [listCategory]="'latest'"></app-post-list>
+    </div>
+
+    <div class="mb-20">
+      <app-post-list [listCategory]="'featured'"></app-post-list>
     </div>
   </div>
 </div>

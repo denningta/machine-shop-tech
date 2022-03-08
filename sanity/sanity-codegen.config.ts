@@ -1,5 +1,8 @@
 import { SanityCodegenConfig } from 'sanity-codegen';
 
+// run "npx sanity-codegen" at the root of the sanity project 
+// to output the schema to the below outputPath.
+
 const config: SanityCodegenConfig = {
   schemaPath: './schemas/schema.js',
   outputPath: '../src/app/interfaces/sanity-schema.ts',

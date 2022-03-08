@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  blogLists: ("latest" | "featured" | undefined)[] =[
-    'latest',
-    'featured'
-  ]
 
   constructor() {}
 

@@ -1,4 +1,5 @@
 import sanityClient from "@sanity/client";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import groq from "groq";
 import type * as Schema from '../interfaces/sanity-schema';
 
@@ -34,6 +35,27 @@ export type LandingPageQueryResult = Omit<Schema.LandingPage, 'callToAction' | '
   navItems: Schema.NavItem[];
   services: Schema.Service[];
 }
+
+
+export function getBlogPosts() {
+  return groq`
+    *[_type == 'post']{
+      ...,
+      author->,
+      "categories": categories[]->{
+        ...,
+      }
+    }
+  `
+}
+
+export type BlogPostQueryResult = Omit<Schema.Post, 'author' | 'categories' | 'mainImage'> & {
+  author: Schema.Author;
+  categories: Schema.Category[];
+  mainImage: SanityImageSource;
+}
+
+
 
 
 export const routesQuery = groq`

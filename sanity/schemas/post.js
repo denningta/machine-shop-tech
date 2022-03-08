@@ -43,6 +43,12 @@ export default {
       type: 'datetime',
     },
     {
+      name: 'featured',
+      title: 'Featured Post?',
+      description: 'Check to pin this post to the featured list',
+      type: 'boolean'
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
