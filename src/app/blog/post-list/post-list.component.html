@@ -46,5 +46,8 @@
       <div class="grow hidden sm:flex">{{ post.author.name }}</div>
       <div class="hidden sm:flex">6 mins</div>
     </div>
+    <div>
+      {{ post.publishedAt | date }}
+    </div>
   </div>
 </ng-template>

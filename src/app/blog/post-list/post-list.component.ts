@@ -36,10 +36,11 @@ export class PostListComponent implements OnInit {
   }
 
   getLatestPosts(posts: BlogPostQueryResult[]) {
-    this.latestPosts = _.sortBy(posts, (post) => {
+    this.latestPosts = _.orderBy(posts, (post) => {
       if (!post.publishedAt) return;
       return new Date(post.publishedAt);
-    }).slice(0, 3);
+    }, ['desc']).slice(0, 3);
+    console.log(this.latestPosts)
   }
 
   getFeaturedPosts(posts: BlogPostQueryResult[]) {
