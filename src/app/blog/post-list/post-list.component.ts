@@ -25,15 +25,12 @@ export class PostListComponent implements OnInit {
     private router: Router,
   ) {
     this.blogService.posts$.subscribe(posts => {
-      console.log(posts);
       this.getLatestPosts(posts);
       this.getFeaturedPosts(posts);
-      console.log(this.featuredPosts)
     });
   }
 
   ngOnInit(): void {
-    console.log(this.posts);
     if (this.listCategory === 'latest') this.listTitle = 'Latest Posts';
     if (this.listCategory === 'featured') this.listTitle = 'Featured Posts';
   }

@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToolbarModule } from './shared/toolbar/toolbar.module';
 import { DroneIconModule } from './shared/drone-icon/drone-icon.module';
 import { BlogModule } from './blog/blog.module';
+import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 
 function initializeAppFactory(router: Router): () => Observable<RoutesQueryResult> {
   return () => from(client.fetch(routesQuery))

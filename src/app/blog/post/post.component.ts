@@ -27,11 +27,11 @@ export class PostComponent implements OnInit {
         if (!post.slug) return false;
         return post.slug.current === paramMap.get('id');
       });
-      console.log(this.post)
-    })
+    });
   }
 
   ngOnInit(): void {
+
   }
 
 }

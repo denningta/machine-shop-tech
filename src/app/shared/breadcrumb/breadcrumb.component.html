@@ -1,0 +1,15 @@
+<div class="flex items-center text-sm">
+  <div class="flex mr-3 cursor-pointer" (click)="navigate([''])">
+    <mat-icon [inline]="true" class="mr-2">home</mat-icon> <span class="opacity-50">Home</span>
+  </div>
+
+  <div class="flex" *ngFor="let breadcrumb of (breadcrumbs$ | async)">
+    <mat-icon [inline]="true" class="mr-3">chevron_right</mat-icon>
+    <div class="flex mr-3 cursor-pointer" (click)="navigate(breadcrumb.url)">
+      <mat-icon [inline]="true" class="mr-2">{{ breadcrumb.icon }}</mat-icon>
+      <span class="opacity-50">{{ breadcrumb.label }}</span>
+      {{ breadcrumb.url }}
+    </div>
+  </div>
+
+</div>
