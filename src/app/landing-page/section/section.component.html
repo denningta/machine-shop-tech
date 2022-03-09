@@ -22,11 +22,13 @@
     </div>
     <div 
       class="mb-4 opacity-60 leading-loose" 
-      innerHtml="{{ descriptionHTML }}"
       [animateOnScroll]="odd ? fadeInLeft : fadeInRight"
       [aosExitAnimation]="odd ? fadeOutRight : fadeOutLeft"
       [aosOffset]="100"
-    ></div>
+      *ngIf="service.description"
+    >
+      <app-portable-text [portableText]="service.description"></app-portable-text>
+    </div>
 
     <div class="mb-8">
       <app-call-to-action 

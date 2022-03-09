@@ -14,7 +14,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { ToolbarModule } from './shared/toolbar/toolbar.module';
 import { DroneIconModule } from './shared/drone-icon/drone-icon.module';
-import { CommonModule } from '@angular/common';
 import { BlogModule } from './blog/blog.module';
 
 function initializeAppFactory(router: Router): () => Observable<RoutesQueryResult> {

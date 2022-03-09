@@ -50,7 +50,9 @@ export function getBlogPosts() {
 }
 
 export type BlogPostQueryResult = Omit<Schema.Post, 'author' | 'categories' | 'mainImage'> & {
-  author: Schema.Author;
+  author: Omit<Schema.Author, 'image'> & {
+    image: SanityImageSource;
+  };
   categories: Schema.Category[];
   mainImage: SanityImageSource;
 }

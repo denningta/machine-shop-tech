@@ -2,16 +2,19 @@ import { Injectable, Type } from '@angular/core';
 import sanityClient from '@sanity/client';
 import { from, Observable, Subject } from 'rxjs';
 import { LandingPageQueryResult, getlandingPageQuery, routesQuery, RoutesQueryResult, BlogPostQueryResult, getBlogPosts } from './queries.groq';
-import type * as Schema from '../interfaces/sanity-schema';
 import { client } from './queries.groq';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import imageUrlBuilder from '@sanity/image-url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SanityService {
+  imageBuilder = imageUrlBuilder(client);
   landingPageData$!: Observable<LandingPageQueryResult>;
   blogPostData$!: Observable<BlogPostQueryResult>;
+  
 
   constructor(private router: Router,) {
     const route = router.url === '/' ? 'root' : router.url.substring(1);
@@ -26,7 +29,9 @@ export class SanityService {
     return from(client.fetch(getBlogPosts()));
   }
 
-
+  urlFor(source: SanityImageSource) {
+    return this.imageBuilder.image(source);
+  }
 
 
 }

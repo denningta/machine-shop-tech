@@ -1,12 +1,4 @@
 @import "tailwindcss/base";
-
-//Pre-flight customization
-@layer base {
-  p {
-    @apply mb-4
-  }
-}
-
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 

@@ -1,0 +1,28 @@
+a {
+  @apply text-indigo-300
+}
+
+em {
+  @apply opacity-70
+}
+
+p {
+  @apply leading-8 md:leading-9
+}
+
+li {
+  @apply mb-3
+}
+
+strong {
+  @apply font-extrabold text-teal-300
+}
+
+.image-container {
+  @apply max-w-[700px] my-10 mx-auto
+}
+
+img {
+  @apply max-w-full
+}
+

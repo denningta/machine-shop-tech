@@ -10,6 +10,7 @@ import { NavigationItemsModule } from '../shared/navigation-items/navigation-ite
 import { CallToActionModule } from '../shared/call-to-action/call-to-action.module';
 import { DroneIconModule } from '../shared/drone-icon/drone-icon.module';
 import { AnimateOnScrollModule } from '../directives/animate-on-scroll/animate-on-scroll.module';
+import { PortableTextModule } from '../shared/portable-text/portable-text.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AnimateOnScrollModule } from '../directives/animate-on-scroll/animate-o
     CallToActionModule,
     DroneIconModule,
     AnimateOnScrollModule,
+    PortableTextModule,
   ],
   exports: [LandingPageComponent]
 })
