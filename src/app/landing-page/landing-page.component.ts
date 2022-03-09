@@ -1,5 +1,5 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimateOnScrollService } from '../directives/animate-on-scroll/animate-on-scroll.service';
 import { SanityService } from '../services/sanity.service';
 import { fadeInRight, fadeInDown, fadeInUp, fadeOutUp } from 'src/app/animations/fade';
@@ -19,12 +19,18 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private sanityService: SanityService,
     private router: Router,
+    private route: ActivatedRoute,
     private animateOnScroll: AnimateOnScrollService,
   ) {
+    console.log(this.route.snapshot);
+    if (this.route.snapshot.routeConfig) {
+      this.sanityService.getlandingPageData(this.route.snapshot.routeConfig.path)
+    }
     this.pageData$ = sanityService.landingPageData$;
   }
 
   ngOnInit(): void {
+    
   }
 
   onScroll(event: Event) {

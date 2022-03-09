@@ -3,7 +3,7 @@ import sanityClient from '@sanity/client';
 import { from, Observable, Subject } from 'rxjs';
 import { LandingPageQueryResult, getlandingPageQuery, routesQuery, RoutesQueryResult, BlogPostQueryResult, getBlogPosts } from './queries.groq';
 import { client } from './queries.groq';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -16,12 +16,19 @@ export class SanityService {
   blogPostData$!: Observable<BlogPostQueryResult>;
   
 
-  constructor(private router: Router,) {
-    const route = router.url === '/' ? 'root' : router.url.substring(1);
-    this.getlandingPageData(route);
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    console.log(router);
+    console.log(route);
+    route.params.subscribe(value => console.log(value))
+    const routeUrl = router.url === '/' ? 'root' : router.url.substring(1);
+    this.getlandingPageData(routeUrl);
   }
 
-  getlandingPageData(route: string) {
+  getlandingPageData(route: string | undefined) {
+    if (!route) return;
     this.landingPageData$ = from(client.fetch(getlandingPageQuery(route)));
   }
 
