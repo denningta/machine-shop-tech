@@ -6,13 +6,20 @@ import _ from 'lodash';
 import { BlogService } from '../blog.service';
 import { Router } from '@angular/router';
 
+export type ListCategory = 
+  'latest' | 
+  'featured' | 
+  'latestAll' |
+  'featuredAll' |
+  undefined;
+
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-  @Input() listCategory: 'latest' | 'featured' | undefined;
+  @Input() listCategory: ListCategory;
   @Input() posts!: BlogPostQueryResult[];
 
   imageBuilder = imageUrlBuilder(client)
@@ -39,8 +46,7 @@ export class PostListComponent implements OnInit {
     this.latestPosts = _.orderBy(posts, (post) => {
       if (!post.publishedAt) return;
       return new Date(post.publishedAt);
-    }, ['desc']).slice(0, 3);
-    console.log(this.latestPosts)
+    }, ['desc']);
   }
 
   getFeaturedPosts(posts: BlogPostQueryResult[]) {
@@ -54,6 +60,10 @@ export class PostListComponent implements OnInit {
   selectPost(slug: any) {
     if (!slug) return;
     this.router.navigate(['/blog', slug.current]);
+  }
+
+  onSeeAll(listCategory: ListCategory) {
+    
   }
 
 }
