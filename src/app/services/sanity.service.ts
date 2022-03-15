@@ -20,9 +20,6 @@ export class SanityService {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    console.log(router);
-    console.log(route);
-    route.params.subscribe(value => console.log(value))
     const routeUrl = router.url === '/' ? 'root' : router.url.substring(1);
     this.getlandingPageData(routeUrl);
   }

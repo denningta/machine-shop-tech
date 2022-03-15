@@ -25,4 +25,24 @@ export class PortableTextService {
     const renderedHTML = toHTML(blockContent, {components: this.components});
     return renderedHTML;
   }
+
+  toPlainText(blocks: BlockContent = []) {
+    return blocks.map(block => {
+      if (block._type !== 'block' || !block['children']) {
+        return '';
+      }
+      return block['children'].map((child: any) => child.text).join('')
+    }).join('\n\n');
+  }
+
+  toPreviewSnippet(blocks: BlockContent = [], wordCount: number) {
+    const body = blocks.map(block => {
+      if (block._type !== 'block' || !block['children'] || block['style'] !== 'normal') {
+        return '';
+      }
+      return block['children'].map((child: any) => child.text).join('')
+    }).join('\n');
+    const snippet = body.split(' ').slice(0, wordCount).join(' ').concat('  ...');
+    return snippet;
+  }
 }

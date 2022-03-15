@@ -5,6 +5,8 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import _ from 'lodash';
 import { BlogService } from '../blog.service';
 import { Router } from '@angular/router';
+import { SanityService } from 'src/app/services/sanity.service';
+import { PortableTextService } from 'src/app/shared/portable-text/portable-text.service';
 
 export type ListCategory = 
   'latest' | 
@@ -20,6 +22,7 @@ export type ListCategory =
 })
 export class PostListComponent implements OnInit {
   @Input() listCategory: ListCategory;
+  @Input() summary: boolean = true;
   @Input() posts!: BlogPostQueryResult[];
 
   imageBuilder = imageUrlBuilder(client)
@@ -30,6 +33,8 @@ export class PostListComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private router: Router,
+    public sanityService: SanityService,
+    public portableTextService: PortableTextService,
   ) {
     this.blogService.posts$.subscribe(posts => {
       this.getLatestPosts(posts);
@@ -47,6 +52,7 @@ export class PostListComponent implements OnInit {
       if (!post.publishedAt) return;
       return new Date(post.publishedAt);
     }, ['desc']);
+    console.log(this.latestPosts);
   }
 
   getFeaturedPosts(posts: BlogPostQueryResult[]) {
@@ -63,7 +69,7 @@ export class PostListComponent implements OnInit {
   }
 
   onSeeAll(listCategory: ListCategory) {
-    
+    this.router.navigate(['blog', listCategory])
   }
 
 }

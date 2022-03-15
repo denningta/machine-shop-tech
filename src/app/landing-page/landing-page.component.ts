@@ -22,7 +22,6 @@ export class LandingPageComponent implements OnInit {
     private route: ActivatedRoute,
     private animateOnScroll: AnimateOnScrollService,
   ) {
-    console.log(this.route.snapshot);
     if (this.route.snapshot.routeConfig) {
       this.sanityService.getlandingPageData(this.route.snapshot.routeConfig.path)
     }

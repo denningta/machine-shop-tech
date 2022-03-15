@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-blog-layout',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    console.log(this.route.snapshot);
+    this.route.url.subscribe(value => console.log(value));
   }
 
 }

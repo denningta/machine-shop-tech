@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'root', redirectTo:'' },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog', breadcrumbIcon: 'history_edu' }, children: [
     { path: '', component: BlogLayoutComponent, data: { breadcrumb: null } },
+    { path: 'latest', component: BlogLayoutComponent, data: { breadcrumb: 'Latest', breadcrumbIcon: 'today' } },
+    { path: 'featured', component: BlogLayoutComponent, data: { breadcrumb: 'Featured', breadcrumbIcon: 'push_pin' } },
     { path: ':id', component: PostComponent, data: { breadcrumb: 'Post', breadcrumbIcon: 'article' } },
   ] },
 ];

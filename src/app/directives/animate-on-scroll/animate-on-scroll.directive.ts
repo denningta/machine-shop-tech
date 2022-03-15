@@ -28,7 +28,6 @@ export class AnimateOnScrollDirective {
     private renderer: Renderer2,
     private animationBuilder: AnimationBuilder
   ) {
-    console.log(this.element)
     this.scroll$ = this._scroll$.asObservable();
     this.renderer.setStyle(this.element.nativeElement, 'opacity', 0);
     this.scroll$.pipe(
