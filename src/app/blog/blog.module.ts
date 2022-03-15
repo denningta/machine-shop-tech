@@ -8,6 +8,7 @@ import { PortableTextModule } from '../shared/portable-text/portable-text.module
 import { BreadcrumbModule } from '../shared/breadcrumb/breadcrumb.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { BlogLayoutComponent } from './blog-layout/blog-layout.component';
+import { AnimateOnScrollModule } from '../directives/animate-on-scroll/animate-on-scroll.module';
 
 
 
@@ -19,6 +20,7 @@ import { BlogLayoutComponent } from './blog-layout/blog-layout.component';
     PortableTextModule,
     BreadcrumbModule,
     AppRoutingModule,
+    AnimateOnScrollModule,
   ],  
   exports: [BlogComponent]
 })

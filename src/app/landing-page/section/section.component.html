@@ -6,25 +6,16 @@
     </div>
     <div
       class="text-indigo-400 mb-4"
-      [animateOnScroll]="odd ? fadeInLeft : fadeInRight"
-      [aosExitAnimation]="odd ? fadeOutRight : fadeOutLeft"
-      [aosOffset]="100"
     >
       {{ service.title }}
     </div>
     <div
       class="mb-4 text-3xl font-bold"
-      [animateOnScroll]="odd ? fadeInLeft : fadeInRight"
-      [aosExitAnimation]="odd ? fadeOutRight : fadeOutLeft"
-      [aosOffset]="100"
     >
       {{ service.subtitle }}
     </div>
     <div 
       class="mb-4 opacity-60 leading-loose" 
-      [animateOnScroll]="odd ? fadeInLeft : fadeInRight"
-      [aosExitAnimation]="odd ? fadeOutRight : fadeOutLeft"
-      [aosOffset]="100"
       *ngIf="service.description"
     >
       <app-portable-text [portableText]="service.description"></app-portable-text>
@@ -41,8 +32,6 @@
   <div class="flex justify-center md:self-center">
     <div 
       class="w-72 h-72 sm:w-96 sm:h-96 bg-gray-900 rounded-xl shadow overflow-hidden relative flex justify-center items-center"
-      [animateOnScroll]="odd ? fadeInRight : fadeInLeft"
-      [aosExitAnimation]="odd ? fadeOutLeft : fadeOutRight"
     >
       <img src="/assets/images/drone_spray.jpg" alt="" class="absolute left-0 top-0 w-full h-auto">
       <div class="relative bg-transparent text-center">

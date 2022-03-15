@@ -1,6 +1,6 @@
-import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } from '@angular/animations';
+import { AnimationBuilder, AnimationMetadata, AnimationPlayer } from '@angular/animations';
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, mergeMap, Observable, of, skipWhile, Subject, switchMap, tap, throttle, throttleTime } from 'rxjs';
+import { BehaviorSubject, distinctUntilKeyChanged, map, Observable, of, pairwise, skip, skipWhile, switchMap, tap, throttleTime } from 'rxjs';
 import { AnimateOnScrollService } from './animate-on-scroll.service';
 
 @Directive({
@@ -9,8 +9,8 @@ import { AnimateOnScrollService } from './animate-on-scroll.service';
 export class AnimateOnScrollDirective {
   @Input() animateOnScroll!: AnimationMetadata | AnimationMetadata[];
   @Input() aosExitAnimation!: AnimationMetadata | AnimationMetadata[];
-  @Input() aosOffset: number = 0;
-  @Input() aosDelay: number = 0;
+  @Input() aosOffset: number = 100;
+  @Input() aosDelay: number = 1000;
 
   private _scroll$ = new BehaviorSubject<Event | undefined>(undefined);
   scroll$: Observable<Event | undefined>;
@@ -28,29 +28,32 @@ export class AnimateOnScrollDirective {
     private renderer: Renderer2,
     private animationBuilder: AnimationBuilder
   ) {
+    console.log(this.element)
     this.scroll$ = this._scroll$.asObservable();
-    let entryTriggered = false;
+    this.renderer.setStyle(this.element.nativeElement, 'opacity', 0);
     this.scroll$.pipe(
       switchMap(() => {
         const viewportHeight = window.innerHeight;
         const yPos = this.element.nativeElement.getBoundingClientRect().y;
         return of({viewportHeight, yPos})
       }),
-      map(({viewportHeight, yPos}) => {
-        if ((yPos + this.aosOffset) <= viewportHeight) return 'onScreen'; 
-        return 'offScreen';
+      throttleTime(50),
+      pairwise(),
+      map(([prev, curr]) => {
+        const scrollDirection = curr.yPos < prev.yPos ? 'down' : 'up';
+        const elementIs = curr.yPos < curr.viewportHeight ? 'onScreen' : 'offScreen';
+        const trigger = (curr.yPos + this.aosOffset) < curr.viewportHeight ? 'entry' : 'exit';
+        return {
+          scrollDirection: scrollDirection,
+          elementIs: elementIs,
+          trigger: trigger,
+        }
       }),
-      throttleTime(150),
-      distinctUntilChanged(),
-    ).subscribe((value) => {
-      if (!entryTriggered) this.renderer.setStyle(this.element.nativeElement, 'opacity', 0);
-      if (value === 'onScreen') {
-        setTimeout(() => this.triggerEntryAnimation(), this.aosDelay);
-        entryTriggered = true;
-      }
-      if (value == 'offScreen' && entryTriggered) {
-        setTimeout(() => this.triggerExitAnimation(), this.aosDelay);
-      } 
+    ).subscribe(({scrollDirection, elementIs, trigger}) => {
+      // if (scrollDirection === 'down' && trigger === 'entry') this.triggerEntryAnimation();
+      // if (scrollDirection === 'up' && trigger === 'exit') this.triggerExitAnimation();
+      // if (elementIs === 'offScreen') this.renderer.setStyle(this.element.nativeElement, 'opacity', 0);
+      // if (elementIs === 'onScreen') this.renderer.setStyle(this.element.nativeElement, 'opacity', 1);
     });
   }
 

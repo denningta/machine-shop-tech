@@ -23,7 +23,6 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   navigate(url: string[]) {
-    console.log(url);
     this.router.navigate(url);
   }
 
