@@ -1,6 +1,6 @@
 import { AnimationBuilder, AnimationMetadata, AnimationPlayer } from '@angular/animations';
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
-import { BehaviorSubject, distinctUntilKeyChanged, map, Observable, of, pairwise, skip, skipWhile, switchMap, tap, throttleTime } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, pairwise, switchMap, throttleTime } from 'rxjs';
 import { AnimateOnScrollService } from './animate-on-scroll.service';
 
 @Directive({

@@ -41,7 +41,7 @@ function initializeAppFactory(router: Router): () => Observable<RoutesQueryResul
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     LandingPageModule,
