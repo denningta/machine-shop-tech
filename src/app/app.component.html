@@ -7,10 +7,10 @@
       mode="over" 
       position="end"
       fixedInViewport="true" 
-      class="bg-gray-900 text-white p-12 w-4/5 min-w-fit">
+      class="bg-primarydark text-white p-12 w-4/5 min-w-fit">
       <div
         (click)="sideNav.close()"
-        class="absolute top-4 right-4 text-gray-500">
+        class="absolute top-4 right-4 text-secondarylight">
         <mat-icon>close</mat-icon>
       </div>
       <app-navigation-items
@@ -19,8 +19,8 @@
       ></app-navigation-items>
     </mat-sidenav>
 
-    <mat-sidenav-content (scroll)="onScroll($event)" class="bg-zinc-900">
-      <div class="bg-zinc-900 text-white">
+    <mat-sidenav-content (scroll)="onScroll($event)" class="bg-primarydark">
+      <div class="bg-primarydark text-white">
         <div class="fixed top-0 z-50 w-full">
           <app-toolbar (menuClick)="sideNav.toggle()" [navItems]="pageData.navItems"></app-toolbar>
         </div>
@@ -35,7 +35,7 @@
 </div>
 
 <ng-template #loading >
-  <div class="flex justify-center items-center w-full h-full bg-zinc-900">
+  <div class="flex justify-center items-center w-full h-full bg-primarydark">
     <app-drone-icon></app-drone-icon>
   </div>
 </ng-template>

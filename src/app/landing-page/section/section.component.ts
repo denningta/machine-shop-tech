@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { fadeInRight, fadeInDown, fadeInUp, fadeOutUp, fadeOutRight, fadeInLeft, fadeOutLeft } from 'src/app/animations/fade';
 import { Service } from 'src/app/interfaces/sanity-schema';
+import { SanityService } from 'src/app/services/sanity.service';
 import { PortableTextService } from 'src/app/shared/portable-text/portable-text.service';
 
 @Component({
@@ -22,7 +23,10 @@ export class SectionComponent implements OnInit {
 
   descriptionHTML!: string;
 
-  constructor(private portableTextService: PortableTextService) {}
+  constructor(
+    public sanityService: SanityService,
+    private portableTextService: PortableTextService
+  ) {}
 
   ngOnInit(): void {
     if (!this.service) return;

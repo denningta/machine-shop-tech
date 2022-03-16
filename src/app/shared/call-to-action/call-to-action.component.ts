@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CallToAction } from 'src/app/interfaces/sanity-schema';
 
 @Component({
@@ -10,10 +12,17 @@ export class CallToActionComponent implements OnInit {
   @Input() callToAction!: Omit<CallToAction, 'route'> & {
     route: string;
   };
+  emailInput = new FormControl('');
   
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+
+  }
+
+  onSubmit() {
+    console.log(this.emailInput);
+    this.router.navigate([this.callToAction.route]);
   }
 
 }

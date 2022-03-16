@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CallToActionComponent } from './call-to-action.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     RouterModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
   exports: [CallToActionComponent]
 })

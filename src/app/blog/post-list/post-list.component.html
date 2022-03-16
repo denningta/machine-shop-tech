@@ -11,7 +11,7 @@
       class="h-[360px] cursor-pointer transition ease-in-out hover:scale-[1.01] duration-100 drop-shadow"
       [class]="first ? 'col-span-2' : 'col-span-1'"
       (click)="selectPost(post.slug)">
-      <div class="w-full h-full bg-slate-800 rounded-2xl overflow-hidden flex flex-col"
+      <div class="w-full h-full bg-secondarydark rounded-2xl overflow-hidden flex flex-col"
         [class]="first ? 'md:grid md:grid-cols-2' : ''">
         <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{post: post, first: first}"></ng-container>
       </div>
@@ -26,7 +26,7 @@
       class="h-[260px] md:h-[360px] cursor-pointer transition ease-in-out hover:scale-[1.01] duration-100 col-span-1"
       (click)="selectPost(post.slug)"
     >
-      <div class="w-full h-full bg-slate-800 rounded-2xl overflow-hidden flex flex-col">
+      <div class="w-full h-full bg-secondarydark rounded-2xl overflow-hidden flex flex-col">
         <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{post: post}"></ng-container>
       </div>
     </div>
@@ -34,7 +34,7 @@
 </ng-template>
 
 <ng-template #card let-post="post" let-first="first">
-  <div class="grow content-center bg-indigo-900 overflow-hidden">
+  <div class="grow content-center bg-primary overflow-hidden">
     <div class="relative pt-[56.25%]"><img class="absolute left-0 top-0 w-full h-auto" [src]="sanityService.urlFor(post.mainImage)" /></div>
   </div>
   <div class="flex flex-col p-3 md:p-6">

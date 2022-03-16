@@ -1,16 +1,39 @@
-<a routerLink="/{{callToAction.route}}">
-  <div *ngIf="callToAction.style === 'primary'; then primary else secondary"></div>
-</a>
+<div [ngSwitch]="callToAction.style">
+  <ng-container *ngSwitchCase="'primary'" [ngTemplateOutlet]="primary"></ng-container>
+  <ng-container *ngSwitchCase="'secondary'" [ngTemplateOutlet]="secondary"></ng-container>
+  <ng-container *ngSwitchCase="'email'" [ngTemplateOutlet]="email"></ng-container>
+</div>
 
 <ng-template #primary>
-  <div class="w-fit rounded-lg px-4 py-3 cursor-pointer transition ease-in-out bg-indigo-700 hover:-translate-y-0.5 hover:scale-105 hover:bg-indigo-600 duration-300">
-    {{ callToAction.buttonText }}
-  </div>
+  <a routerLink="/{{callToAction.route}}">
+    <div class="w-fit rounded-full px-4 py-3 cursor-pointer transition ease-in-out bg-gradient-to-r from-rose-600 to-rose-800 hover:-translate-y-0.5 hover:scale-105 hover:bg-gradient-to-r duration-300">
+      {{ callToAction.buttonText }}
+    </div>
+  </a>
 </ng-template>
 
 <ng-template #secondary>
-  <div class="flex w-fit rounded-full pl-5 pr-3 py-2 cursor-pointer transition ease-in-out bg-gray-700 hover:-translate-y-0.5 hover:scale-105 hover:bg-gray-600 duration-300">
-    {{ callToAction.buttonText }}
-    <mat-icon>chevron_right</mat-icon>
+  <a routerLink="/{{callToAction.route}}">
+    <div class="flex w-fit rounded-full pl-5 pr-3 py-2 cursor-pointer transition ease-in-out bg-slate-800 hover:scale-[1.01] hover:bg-slate-700 duration-300">
+      {{ callToAction.buttonText }}
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </a>
+</ng-template>
+
+
+<ng-template #email>
+  <div class="p-1 rounded-full bg-gradient-to-r from-zinc-500 bg-zinc-800 hover:bg-gradient-to-r hover:from-zinc-400 hover:bg-zinc-700 drop-shadow">
+    <div class="flex rounded-full overflow-hidden">
+      <input type="text"
+        id="emailSubmit"
+        [formControl]="emailInput"
+        class="bg-zinc-100 sm:w-[275px] outline-none text-black px-5" 
+        placeholder="Enter your email...">
+      <div (click)="onSubmit()"
+        class="w-fit -ml-5 px-4 py-3 cursor-pointer transition ease-in-out bg-rose-600 hover:bg-rose-800">
+        {{ callToAction.buttonText }}
+      </div>
+    </div>
   </div>
 </ng-template>

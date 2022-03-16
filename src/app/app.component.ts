@@ -10,7 +10,7 @@ import { BreadcrumbService } from './shared/breadcrumb/breadcrumb.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'precision-aero';
+  title = 'machine-shop-tech';
   pageData$;
 
   constructor(

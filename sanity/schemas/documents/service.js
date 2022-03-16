@@ -2,11 +2,24 @@ export default {
   title: 'Service',
   name: 'service',
   type: 'document',
+  groups: [
+    { name: 'summary', title: 'Landing Page Summary' },
+    { name: 'details', title: 'Full Page' }
+  ],
   fields: [
     { 
       name: 'title',
       title: 'Title',
       type: 'string'
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
     },
     {
       name: 'subtitle',
@@ -23,12 +36,15 @@ export default {
       name: 'image',
       title: 'Image',
       description: 'Visual description of the service',
-      type: 'image'
+      type: 'image',
+      group: 'summary'
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'blockContent'
+      description: 'A short description of the service',
+      type: 'blockContent',
+      group: 'summary'
     },
   ]
 }

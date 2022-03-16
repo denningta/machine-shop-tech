@@ -25,6 +25,7 @@ export default {
         list: [
           { title: 'Primary', value: 'primary' },
           { title: 'Secondary', value: 'secondary' },
+          { title: 'Request Email', value: 'email' }
         ]
       }
     },

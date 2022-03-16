@@ -1,13 +1,13 @@
 <div class="px-4 py-16 md:grid md:grid-cols-2 md:max-w-[1000px]">
 
-  <div [class]="odd ? 'md:order-last' : ''">
-    <div class="mb-6 flex justify-center items-center text-fuchsia-600 w-14 h-14 bg-gradient-to-br from-fuchsia-900 to-fuchsia-500 outline outline-2 shadow-md rounded-full" [animateOnScroll]="fadeInRight">
+  <div class="flex flex-col justify-center" [class]="odd ? 'md:order-last' : ''">
+    <!-- <div class="mb-6 flex justify-center items-center text-fuchsia-600 w-14 h-14 bg-gradient-to-br from-fuchsia-900 to-fuchsia-500 outline outline-2 shadow-md rounded-full" [animateOnScroll]="fadeInRight">
       <mat-icon class="scale-125 text-fuchsia-300" >air</mat-icon>
-    </div>
+    </div> -->
     <div
-      class="text-indigo-400 mb-4"
+      class="text-rose-500 font-bold mb-4 tracking-wider"
     >
-      {{ service.title }}
+      {{ service.title | uppercase }}
     </div>
     <div
       class="mb-4 text-3xl font-bold"
@@ -21,7 +21,7 @@
       <app-portable-text [portableText]="service.description"></app-portable-text>
     </div>
 
-    <div class="mb-8">
+    <div class="">
       <app-call-to-action 
         [callToAction]="{buttonText: 'Learn More', style: 'secondary', _type: 'callToAction', _updatedAt: '', _id: '', _createdAt: '', _rev: '', route: ''}"
       ></app-call-to-action>
@@ -29,14 +29,8 @@
 
   </div>  
 
-  <div class="flex justify-center md:self-center">
-    <div 
-      class="w-72 h-72 sm:w-96 sm:h-96 bg-gray-900 rounded-xl shadow overflow-hidden relative flex justify-center items-center"
-    >
-      <img src="/assets/images/drone_spray.jpg" alt="" class="absolute left-0 top-0 w-full h-auto">
-      <div class="relative bg-transparent text-center">
-      </div>
-    </div>
+  <div *ngIf="service.image" class="h-full flex items-center p-5">
+    <img [src]="sanityService.urlFor(service.image)" alt="" class="rounded">
   </div>
 
 </div>
