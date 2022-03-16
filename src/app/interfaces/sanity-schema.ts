@@ -325,6 +325,13 @@ export interface Post extends SanityDocument {
   author?: SanityReference<Author>;
 
   /**
+   * Excerpt — `simplePortableText`
+   *
+   * The text that will display on google search results or socail share cards
+   */
+  excerpt?: SimplePortableText;
+
+  /**
    * Main image — `image`
    *
    *
@@ -430,6 +437,34 @@ export interface Category extends SanityDocument {
   description?: string;
 }
 
+/**
+ * settings
+ *
+ *
+ */
+export interface SiteSettings extends SanityDocument {
+  _type: "siteSettings";
+
+  /**
+   * Brand Name — `string`
+   *
+   * Branding title that appears next to the brand logo
+   */
+  name?: string;
+
+  /**
+   * Brand Icon — `image`
+   *
+   * The brand icon for the site
+   */
+  icon?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+}
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -439,6 +474,8 @@ export type BlockContent = Array<
       hotspot?: SanityImageHotspot;
     }>
 >;
+
+export type SimplePortableText = Array<SanityKeyed<SanityBlock>>;
 
 export type Documents =
   | Route
@@ -450,4 +487,5 @@ export type Documents =
   | SocialConnection
   | Post
   | Author
-  | Category;
+  | Category
+  | SiteSettings;
