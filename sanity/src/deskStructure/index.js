@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder';
 import siteSettings from './siteSettings';
 import marketingSite from './marketingSite';
-import blog from './blog';
+import blog from './blog/blog';
 
 // React-icon https://react-icons.github.io/react-icons
 

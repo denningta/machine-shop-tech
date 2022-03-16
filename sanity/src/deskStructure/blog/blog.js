@@ -1,4 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder';
+
+import views from './views';
+
 import { FaBloggerB } from 'react-icons/fa';
 import { GrArticle } from 'react-icons/gr';
 import { FaUserAstronaut } from 'react-icons/fa';
@@ -10,7 +13,13 @@ export default S.listItem().title('Blog').icon(FaBloggerB)
     .items([
       S.listItem().title('Posts').icon(GrArticle)
         .schemaType('post')
-        .child(S.documentTypeList('post').title('Posts')),
+        .child(
+          S.documentTypeList('post').title('Posts')
+            .child(documentId => 
+              S.document().documentId(documentId).schemaType('post')
+                .views(views)  
+            )
+        ),
       S.listItem().title('Authors').icon(FaUserAstronaut)
         .schemaType('author')
         .child(S.documentTypeList('author')),

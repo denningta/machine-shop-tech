@@ -24,6 +24,12 @@ export default {
       to: {type: 'author'},
     },
     {
+      name: 'excerpt',
+      title: 'Excerpt',
+      description: 'The text that will display on google search results or socail share cards',
+      type: 'simplePortableText'
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
