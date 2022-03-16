@@ -265,6 +265,18 @@ export interface Service extends SanityDocument {
   icon?: string;
 
   /**
+   * Image — `image`
+   *
+   * Visual description of the service
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
    * Description — `blockContent`
    *
    *

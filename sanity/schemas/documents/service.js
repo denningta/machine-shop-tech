@@ -20,10 +20,15 @@ export default {
       type: 'string'
     },
     {
+      name: 'image',
+      title: 'Image',
+      description: 'Visual description of the service',
+      type: 'image'
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'blockContent'
     },
-
   ]
 }

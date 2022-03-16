@@ -19,8 +19,8 @@
       ></app-navigation-items>
     </mat-sidenav>
 
-    <mat-sidenav-content (scroll)="onScroll($event)" class="bg-slate-900">
-      <div class="bg-slate-900 text-white">
+    <mat-sidenav-content (scroll)="onScroll($event)" class="bg-zinc-900">
+      <div class="bg-zinc-900 text-white">
         <div class="fixed top-0 z-50 w-full">
           <app-toolbar (menuClick)="sideNav.toggle()" [navItems]="pageData.navItems"></app-toolbar>
         </div>
@@ -35,7 +35,7 @@
 </div>
 
 <ng-template #loading >
-  <div class="flex justify-center items-center w-full h-full bg-slate-900">
+  <div class="flex justify-center items-center w-full h-full bg-zinc-900">
     <app-drone-icon></app-drone-icon>
   </div>
 </ng-template>

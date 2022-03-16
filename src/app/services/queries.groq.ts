@@ -4,7 +4,7 @@ import groq from "groq";
 import type * as Schema from '../interfaces/sanity-schema';
 
 export const client = sanityClient({
-  projectId: '6xnf6evu',
+  projectId: 'b74i10k9',
   dataset: 'production',
   apiVersion: '2021-03-25',
   useCdn: true,

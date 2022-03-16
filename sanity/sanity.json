@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "precision-aero"
+    "name": "machineshoptech"
   },
   "api": {
-    "projectId": "6xnf6evu",
+    "projectId": "b74i10k9",
     "dataset": "production"
   },
   "plugins": [
