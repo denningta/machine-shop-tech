@@ -7,10 +7,16 @@ export default {
     { name: 'details', title: 'Full Page' }
   ],
   fields: [
+    {
+      name: 'internalTitle',
+      title: 'Internal Title',
+      type: 'string'
+    },
     { 
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+      group: 'summary'
     },
     {
       name: 'slug',
@@ -24,19 +30,33 @@ export default {
     {
       name: 'subtitle',
       title: 'SubTitle',
-      type: 'string'
+      type: 'string',
+      group: 'summary'
     },
     {
       name: 'icon',
       title: 'Google Fonts Icon',
       description: 'Icon selector from https://fonts.google.com/icons?selected=Material+Icons',
-      type: 'string'
+      type: 'string',
+      group: 'summary'
+    },
+    {
+      name: 'callToAction',
+      title: 'Call to Action',
+      description: 'Select the call-to-action to associate with this service.',
+      type: 'reference',
+      to: [
+        {type: 'callToAction'}
+      ]
     },
     {
       name: 'image',
       title: 'Image',
       description: 'Visual description of the service',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
       group: 'summary'
     },
     {

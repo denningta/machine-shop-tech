@@ -4,17 +4,23 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'buttonText',
-      title: 'Button Text',
-      description: 'The text that will be displayed in the button',
+      name: 'title',
+      title: 'CTA Title',
+      description: 'Title this call-to-action',
       type: 'string',
-      validation: Rule => Rule.max(50).warning(`The button text of a call-to-action should not exceed 50 characters.`)
     },
     {
       name: 'description',
       title: 'CTA description',
       description: 'Describe the purpose of this call-to-action',
       type: 'string'
+    },
+    {
+      name: 'buttonText',
+      title: 'Button Text',
+      description: 'The text that will be displayed in the button',
+      type: 'string',
+      validation: Rule => Rule.max(50).warning(`The button text of a call-to-action should not exceed 50 characters.`)
     },
     {
       name: 'style',
@@ -32,9 +38,12 @@ export default {
     {
       name: 'route',
       title: 'Route',
-      description: 'What route should this call-to-action call when clicked?',
+      description: 'Select the route or blog post to navigate to when this CTA is clicked.',
       type: 'reference',
-      to: [{type: 'route'}]
+      to: [
+        {type: 'route'},
+        {type: 'post'}
+      ]
     },
 
   ]

@@ -21,7 +21,7 @@ export class CallToActionComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.emailInput);
+    console.log(this.emailInput, this.callToAction.route);
     this.router.navigate([this.callToAction.route]);
   }
 
